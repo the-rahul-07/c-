@@ -7,21 +7,32 @@ using std ::cin;
 using std ::cout;
 int play_game()
 {
+    int i;
+    int array[101];
     int random;
+    int count = 0;
     random = rand() % 101;
     cout << "Game is being played\n";
     // cout << random << "\n";
 
     cout << "Guess the number game!\n";
-    cout << "Enter number:\n";
+    cout << "Enter number : ";
 
     while (true)
     {
         int guess;
         cin >> guess;
+        array[count] = guess;
         if (guess == random)
         {
             cout << "Guessed right, You won the game!\n";
+            cout << "Your number of guesses are : " << count << "\n";
+            cout << "Your Guessed numbers are :\n";
+            for (i = 0; i < count; i++)
+            {
+                cout << array[i] << "\t";
+            }
+            cout << "\n";
             break;
         }
         else if (guess < random)
@@ -34,6 +45,7 @@ int play_game()
             cout << "Too high\n";
             cout << "Guess again : ";
         }
+        count++;
     }
 }
 int main()
